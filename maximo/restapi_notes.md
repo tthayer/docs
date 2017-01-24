@@ -26,6 +26,7 @@ IBM's documentation has several examples showing REST API authentication.
         * POST request
         * header set to "Content-Type: application/x-www-form-urlencoded"
         * Payload data comprising of the following:
+
           ```python
           payload = {
             'allowinsubframe': 'null',
@@ -37,14 +38,19 @@ IBM's documentation has several examples showing REST API authentication.
             'j_password': _password,
           }
           ```
+
         * The payload needs to be urlencoded in your request:
+
           ```python
           session = requests.Session()
           session.post(url=maximo_login_endpoint, data=urllib.urlencode(payload), headers=headers, verify=False)
           ```
+
         * Inspecting your request, you should see two cookies. One has your JSESSIONID and the other is your LtpaToken response.
         * Using the python requests library, you can create a session and reuse it for subsequent requests.
+
           ```python
           r = session.get('https://yourmaximo/maximo/oslc/os/mxwo?lean=1&searchAttributes=wonum&oslc.searchTerms=%22IW123456%22&oslc.select=wonum,status')
           ```
+
         * Your session is good for 30 minutes, though you can easily destroy and re-create the session if needed.
