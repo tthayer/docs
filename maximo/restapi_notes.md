@@ -53,4 +53,4 @@ IBM's documentation has several examples showing REST API authentication.
           r = session.get('https://yourmaximo/maximo/oslc/os/mxwo?lean=1&searchAttributes=wonum&oslc.searchTerms=%22IW123456%22&oslc.select=wonum,status')
           ```
 
-        * Your session is good for 30 minutes, though you can easily destroy and re-create the session if needed.
+        * Your session is good for as long as the SPNEGO timeout value set in WebSphere, though you can easily destroy and re-create the session if needed.
